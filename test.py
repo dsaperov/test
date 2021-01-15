@@ -36,3 +36,9 @@ from datetime import date, timedelta, datetime
 #         '''
 #
 # print(sql)
+
+import test_1
+
+a = 1
+
+print(test_1.b)
