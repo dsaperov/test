@@ -1,5 +1,6 @@
 from datetime import date, timedelta, datetime
 
+
 # my_set_1 = {1, 2, 3, 4, 5, 6, 7}
 # my_set_2 = {4, 5, 6, 7, 8, 9, 10}
 #
@@ -37,8 +38,17 @@ from datetime import date, timedelta, datetime
 #
 # print(sql)
 
-import test_1
+class Dog:
 
-a = 1
+    def __init__(self, name, age, mood):
+        self.name = name
+        self.age = age
+        self.mood = mood
 
-print(test_1.b)
+    def __str__(self):
+        return 'My name is {}. I am {} years old {} dog.'.format(self.name, self.age, self.mood)
+
+
+my_dog = Dog('Bim', 5, 'playful')
+print(my_dog)
+print(str(my_dog))
