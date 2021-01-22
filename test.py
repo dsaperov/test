@@ -38,17 +38,34 @@ from datetime import date, timedelta, datetime
 #
 # print(sql)
 
+# class Dog:
+#
+#     def __init__(self, name, age, mood):
+#         self.name = name
+#         self.age = age
+#         self.mood = mood
+#
+#     def __str__(self):
+#         return 'My name is {}. I am {} years old {} dog.'.format(self.name, self.age, self.mood)
+#
+#
+# my_dog = Dog('Bim', 5, 'playful')
+# print(my_dog)
+# print(str(my_dog))
+
 class Dog:
+    def __init__(self, cost):
+        self.cost = cost
 
-    def __init__(self, name, age, mood):
-        self.name = name
-        self.age = age
-        self.mood = mood
-
-    def __str__(self):
-        return 'My name is {}. I am {} years old {} dog.'.format(self.name, self.age, self.mood)
+    def __add__(self, other):
+        res = self.cost + other.cost
+        print(id(res))
+        return res
 
 
-my_dog = Dog('Bim', 5, 'playful')
-print(my_dog)
-print(str(my_dog))
+my_dog1 = Dog(50000)
+my_dog2 = Dog(0)
+
+print(my_dog1.cost)
+print(id(my_dog1.cost))
+print(my_dog1 + my_dog2)
