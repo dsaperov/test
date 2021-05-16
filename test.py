@@ -1,71 +1,20 @@
-from datetime import date, timedelta, datetime
+import re
 
+deep_ocean = '''oCeAn Marlin OcEaN oceAN ocEAN oCEAN OCEAN OCEAn OCEan OCean Ocean ocean oCeAn OcEaN oceAN ocEAN  
+                OCEAN OCEAn OCEan OCean Ocean ocean oCeAn OcEaN oceAN ocEAN oCEAN OCEAN OCEAn OCEan OCean Ocean 
+                ocean oCeAn OcEaN nemaa ocEAN oCEAN OCEAN OCEAn OCEan OCean ocean oCeAn OcEaN oceAN ocEAN 
+                oCEAN OCEAN OCEAn OCEan OCean Ocean ocean oNeMa OcEaN oceAN ocEAN oCEAN OCEAN OCEAn OCEan OCean 
+                Ocean ocean oCeAn OcEaN oceAN nenemo oCEAN OCEAN OCEAn OCEan OCean Ocean Nemo ocean oCeAn OcEaN 
+                oceAN ocEAN oCEAN OCEAN OCEAn OCEan OCean Ocean ocean oCeAn OcEaN oceAN ocEAN oCEAN OCEAN OCEAn 
+                OCEan OCean Ocean ocean  '''
 
-# my_set_1 = {1, 2, 3, 4, 5, 6, 7}
-# my_set_2 = {4, 5, 6, 7, 8, 9, 10}
-#
-# res = my_set_1 - my_set_2
-# print(res)
-#
-# my_set_1 -= my_set_2
-# print(my_set_1)
+nemo_pattern = r'[Nn]em\w{,2}'
 
+# search() же производит поиск по всему тексту, но только до первого совпадения
+matched = re.search(nemo_pattern, deep_ocean)
+print(f'Возвращается объект {matched} внутри которого содержится информация о совпадении')  # re.Match object
 
-# a = 'abcdefgh'.split()
-# b = ['b']
-# print(b > a)
-# '''
-# '''
-# list_1 = [0, 1, 2, 3]
-# list_2 = list_1
-# list_1.append(4)
-# print(list_2)
-
-
-# tomorrow_day = date.today() + timedelta(days=1)
-# tomorrow_begining = datetime(tomorrow_day.year, tomorrow_day.month, tomorrow_day.day)
-# tomorrow_end = tomorrow_begining + timedelta(days=1)
-# print(tomorrow_begining, tomorrow_end)
-
-
-# tomorrow = date.today() + timedelta(days=1)
-# midnight_today = datetime(tomorrow.year, tomorrow.month, tomorrow.day)
-# midnight_tomorrow = midnight_today + timedelta(days=1)
-# sql = f'''
-#             SELECT datetime, event, user_id FROM reminders
-#             WHERE datetime BETWEEN {midnight_today} AND {midnight_tomorrow};
-#         '''
-#
-# print(sql)
-
-# class Dog:
-#
-#     def __init__(self, name, age, mood):
-#         self.name = name
-#         self.age = age
-#         self.mood = mood
-#
-#     def __str__(self):
-#         return 'My name is {}. I am {} years old {} dog.'.format(self.name, self.age, self.mood)
-#
-#
-# my_dog = Dog('Bim', 5, 'playful')
-# print(my_dog)
-# print(str(my_dog))
-
-class Dog:
-    def __init__(self, cost):
-        self.cost = cost
-
-    def __add__(self, other):
-        res = self.cost + other.cost
-        print(id(res))
-        return res
-
-
-my_dog1 = Dog(50000)
-my_dog2 = Dog(0)
-
-print(my_dog1.cost)
-print(id(my_dog1.cost))
-print(my_dog1 + my_dog2)
+# Эту информацию можно извлечь следующими методами:
+print(f'Подстрока, совпавшая с паттерном поиска {matched.group()}')  # type 'str'
+print(f'Индекс начала этой подстроки {matched.start()}')  # 'int'
+print(f'И индекс её окончания {matched.end()}')  # 'int'

@@ -1,5 +1,5 @@
-from test_2 import c
+from unittest.mock import Mock
+import test
 
-b = 1
-
-print('test_1', dir())
+test.vk_apigfdf = Mock(return_value='MOCK')
+test.f()
